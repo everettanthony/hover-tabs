@@ -127,14 +127,16 @@
             const tabTrigger = new bootstrap.Tab(item);
 
             item.addEventListener('mouseenter', function() {
-                hideAllTabs();
+                hideAllTabs(tabTrigger);
                 tabTrigger.show();
             });
         });
 
-        function hideAllTabs() {
-            document.querySelectorAll('.tab-pane.active.show').forEach(function(item){ 	
-                item.classList.remove('active', 'show');
+        function hideAllTabs(activeTrigger) {
+            document.querySelectorAll('.tab-pane').forEach(function(item) { 	
+                if (!activeTrigger) {
+                    item.classList.remove('active', 'show');
+                }
             });           
         }
     </script>
